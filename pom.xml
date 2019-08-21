@@ -58,7 +58,7 @@
     <distributionManagement>
         <repository>
             <id>releases</id>
-            <url>https://artifacts.codice.org/content/groups/public/</url>
+            <url>https://artifacts.codice.org/content/repositories/ion-releases/</url>
         </repository>
     </distributionManagement>
 
@@ -83,11 +83,6 @@
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
-        </pluginRepository>
-        <pluginRepository>
-            <id>codice</id>
-            <name>Codice Repository</name>
-            <url>https://artifacts.codice.org/content/groups/public/</url>
         </pluginRepository>
     </pluginRepositories>
 
