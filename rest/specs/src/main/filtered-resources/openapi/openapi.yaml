@@ -54,6 +54,8 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/Ok'
+        '400':
+          $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
@@ -71,6 +73,16 @@ components:
       headers:
         'Content-Version':
           $ref: '#/components/headers/ContentVersion'
+    BadRequest:
+      description: >
+        The client message could not understood by the server due to invalid format or syntax.
+      headers:
+        'Content-Version':
+          $ref: '#/components/headers/ContentVersion'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorMessage'
     Unauthorized:
       description: >
         The client could not be authenticated.
@@ -94,16 +106,6 @@ components:
     NotImplemented:
       description: >
         The requested API version is not supported and therefore not implemented.
-      headers:
-        'Content-Version':
-          $ref: '#/components/headers/ContentVersion'
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorMessage'
-    BadRequest:
-      description: >
-        The client message could not understood by the server due to invalid format or syntax.
       headers:
         'Content-Version':
           $ref: '#/components/headers/ContentVersion'
