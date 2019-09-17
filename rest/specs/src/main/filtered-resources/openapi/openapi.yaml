@@ -11,7 +11,7 @@ info:
   version: ${project.version}
   title: Index API
   description: >
-    The Index API is defined to provide clients with the ability to index products.
+    The Index API is defined to provide clients with the ability to index resources.
   contact:
     name: Connexta
   license:
@@ -22,21 +22,21 @@ servers:
   - url: ${rest.server.url}
 
 paths:
-  /product/{productId}/cst:
+  /index/{Id}:
     put:
-      summary: Index Endpoint for products.
+      summary: Index Endpoint for resources.
       description: >
-        A system can use the Index Endpoint to index a product.
+        A system can use the Index Endpoint to index a resource.
       operationId: index
       tags:
         - index
       parameters:
         - $ref: '#/components/parameters/Accept-Version'
-        - $ref: '#/components/parameters/ProductId'
+        - $ref: '#/components/parameters/Id'
       requestBody:
         required: true
         description: >
-          The body of the request that includes one attached file that is used to index the product.
+          The body of the request that includes one attached file that is used to index the resource.
         content:
           multipart/form-data:
             schema:
@@ -44,7 +44,7 @@ paths:
               properties:
                 file:
                   description: >
-                    The actual file attachment that that is used to index the product. The current maximum size is the character equivalent of 10GB.
+                    The actual file attachment that that is used to index the resource. The current maximum size is the character equivalent of 10GB.
                   type: string
                   format: binary
                   minLength: 1
@@ -62,8 +62,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '501':
           $ref: '#/components/responses/NotImplemented'
-        'default':
-          $ref: '#/components/responses/DefaultError'
 
 components:
   responses:
@@ -113,16 +111,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorMessage'
-    DefaultError:
-      description: >
-        Any other possible errors not currently known.
-      headers:
-        'Content-Version':
-          $ref: '#/components/headers/ContentVersion'
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorMessage'
 
   parameters:
     Accept-Version:
@@ -133,11 +121,11 @@ components:
       required: true
       schema:
         $ref: '#/components/schemas/Version'
-    ProductId:
-      name: productId
+    Id:
+      name: Id
       in: path
       description: >
-        The ID of the product to index using the attached file.
+        The ID of the resource to index using the attached file.
       required: true
       schema:
         type: string
@@ -191,7 +179,7 @@ components:
         path:
           type: string
           description: The path for the REST request that generated this error.
-          example: /store/product/00067360b70e4acfab561fe593ad3f7a/cst
+          example: /store/index/00067360b70e4acfab561fe593ad3f7a
         status:
           type: integer
           format: int32
