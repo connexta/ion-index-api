@@ -4,9 +4,7 @@
 # Released under the GNU Lesser General Public License version 3; see
 # https://www.gnu.org/licenses/lgpl-3.0.html
 #
-
 openapi: 3.0.2
-
 info:
   version: ${project.version}
   title: Index API
@@ -17,10 +15,8 @@ info:
   license:
     name: GNU Lesser General Public License
     url: 'http://www.gnu.org/licenses/lgpl.html'
-
 servers:
   - url: ${rest.server.url}
-
 paths:
   /index/{Id}:
     put:
@@ -62,7 +58,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '501':
           $ref: '#/components/responses/NotImplemented'
-
 components:
   responses:
     Ok:
@@ -111,7 +106,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorMessage'
-
   parameters:
     Accept-Version:
       name: Accept-Version
@@ -133,7 +127,6 @@ components:
         maxLength: 32
         pattern: '^[0-9a-zA-Z]+$'
         example: 00067360b70e4acfab561fe593ad3f7a
-
   headers:
     ContentVersion:
       description: >
@@ -152,7 +145,6 @@ components:
         dev:
           value: '1.2.0-SNAPSHOT'
           summary: A development version
-
   schemas:
     Version:
       description: Version number.
@@ -161,6 +153,28 @@ components:
       maxLength: 80
       pattern: '^([1-9]([0-9]+)?)\.(0|([1-9]([0-9]+)?))(\.(0|([1-9]([0-9]+)?))(-.*)?)?$'
       example: 1.2, 2.4.3, 0.2.5-SNAPSHOT
+    IndexRequest:
+      description: The description of a request that a client can form to Index a resouce.
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        file:
+          $ref: '#/components/schemas/File'
+      required:
+        - id
+        - file
+    Id:
+      type: string
+      minLength: 32
+      maxLength: 32
+      pattern: '^[0-9a-zA-Z]+$'
+      example: 00067360b70e4acfab561fe593ad3f7a
+    File:
+      type: string
+      format: binary
+      minLength: 1
+      maxLength: 14316557655
     ErrorMessage:
       description: Error message information.
       type: object
