@@ -11,7 +11,7 @@ info:
   version: ${project.version}
   title: Index API
   description: >
-    The Index API is defined to provide clients with the ability to index resources.
+    The Index API is defined to provide clients with the ability to index a dataset.
   contact:
     name: Connexta
   license:
@@ -22,21 +22,21 @@ servers:
   - url: ${rest.server.url}
 
 paths:
-  /index/{Id}:
+  /index/{datasetId}:
     put:
-      summary: Index Endpoint for resources.
+      summary: Index Endpoint for datasets.
       description: >
-        A system can use the Index Endpoint to index a resource.
+        A system can use the Index Endpoint to index a dataset.
       operationId: index
       tags:
         - index
       parameters:
         - $ref: '#/components/parameters/Accept-Version'
-        - $ref: '#/components/parameters/Id'
+        - $ref: '#/components/parameters/DatasetId'
       requestBody:
         required: true
         description: >
-          The body of the request that includes one attached file that is used to index the resource.
+          The body of the request that includes one attached metacard that is used to index the dataset.
         content:
           multipart/form-data:
             schema:
@@ -44,7 +44,8 @@ paths:
               properties:
                 file:
                   description: >
-                    The actual file attachment that that is used to index the resource. The current maximum size is the character equivalent of 10GB.
+                    The metacard attachment that that is used to index the dataset. The current maximum size is the
+                    character equivalent of 10GB.
                   type: string
                   format: binary
                   minLength: 1
@@ -121,11 +122,11 @@ components:
       required: true
       schema:
         $ref: '#/components/schemas/Version'
-    Id:
-      name: Id
+    DatasetId:
+      name: datasetId
       in: path
       description: >
-        The ID of the resource to index using the attached file.
+        The ID of the dataset to index using the attached metacard.
       required: true
       schema:
         type: string
@@ -137,8 +138,8 @@ components:
   headers:
     ContentVersion:
       description: >
-        The API version used by the server to produce the REST message. The server will accept
-        messages for any minor versions prior to this one.
+        The API version used by the server to produce the REST message. The server will accept messages for any minor
+        versions prior to this one.
       required: true
       schema:
         $ref: '#/components/schemas/Version'
@@ -179,7 +180,7 @@ components:
         path:
           type: string
           description: The path for the REST request that generated this error.
-          example: /store/index/00067360b70e4acfab561fe593ad3f7a
+          example: /index/00067360b70e4acfab561fe593ad3f7a
         status:
           type: integer
           format: int32
