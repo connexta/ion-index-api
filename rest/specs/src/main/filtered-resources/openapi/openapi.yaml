@@ -36,7 +36,7 @@ paths:
       requestBody:
         required: true
         description: >
-          The body of the request that includes one attached metacard that is used to index the dataset.
+          The body of the request that includes one IRM that is used to index the dataset.
         content:
           multipart/form-data:
             schema:
@@ -44,7 +44,7 @@ paths:
               properties:
                 file:
                   description: >
-                    The metacard attachment that that is used to index the dataset. The current maximum size is the
+                    The IRM that that is used to index the dataset. The current maximum size is the
                     character equivalent of 10GB.
                   type: string
                   format: binary
@@ -126,7 +126,7 @@ components:
       name: datasetId
       in: path
       description: >
-        The ID of the dataset to index using the attached metacard.
+        The ID of the dataset to index using the IRM.
       required: true
       schema:
         type: string
