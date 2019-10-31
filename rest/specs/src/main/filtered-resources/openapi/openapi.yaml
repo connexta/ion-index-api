@@ -38,20 +38,9 @@ paths:
         description: >
           The body of the request that includes one IRM that is used to index the dataset.
         content:
-          multipart/form-data:
+          application/json:
             schema:
-              type: object
-              properties:
-                file:
-                  description: >
-                    The IRM that that is used to index the dataset. The current maximum size is the
-                    character equivalent of 10GB.
-                  type: string
-                  format: binary
-                  minLength: 1
-                  maxLength: 14316557655
-              required:
-                - file
+              $ref: '#/components/schemas/IndexRequest'
       responses:
         '200':
           $ref: '#/components/responses/Ok'
@@ -155,6 +144,17 @@ components:
           summary: A development version
 
   schemas:
+    IndexRequest:
+      type: object
+      required:
+        - irmLocation
+      properties:
+        irmLocation:
+          description: >
+            This URI must support HTTP GET to retrieve the IRM.
+          type: string
+          format: uri
+          example: https://www.example.com/dataset/30f14c6c1fc85cba12bfd093aa8f90e3/irm
     Version:
       description: Version number.
       type: string
