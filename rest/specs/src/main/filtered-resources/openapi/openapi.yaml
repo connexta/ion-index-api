@@ -38,7 +38,7 @@ paths:
         description: >
           The body of the request that includes one IRM that is used to index the dataset.
         content:
-          multipart/form-data:
+          application/json:
             schema:
               $ref: '#/components/schemas/IndexRequest'
       responses:
