@@ -147,13 +147,20 @@ components:
     IndexRequest:
       type: object
       required:
+        - fileLocation
         - irmLocation
       properties:
+        fileLocation:
+          description: >
+            This URL must support HTTP GET to retrieve the file.
+          type: string
+          format: url
+          example: https://www.example.com/dataset/30f14c6c1fc85cba12bfd093aa8f90e3/file
         irmLocation:
           description: >
-            This URI must support HTTP GET to retrieve the IRM.
+            This URL must support HTTP GET to retrieve the IRM.
           type: string
-          format: uri
+          format: url
           example: https://www.example.com/dataset/30f14c6c1fc85cba12bfd093aa8f90e3/irm
     Version:
       description: Version number.
