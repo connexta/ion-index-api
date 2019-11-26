@@ -119,10 +119,8 @@ components:
       required: true
       schema:
         type: string
-        minLength: 32
-        maxLength: 32
-        pattern: '^[0-9a-zA-Z]+$'
-        example: 00067360b70e4acfab561fe593ad3f7a
+        format: uuid
+        example: 00067360-b70e-4acf-ab56-1fe593ad3f7a
 
   headers:
     ContentVersion:
@@ -156,19 +154,19 @@ components:
             This URL must support HTTP GET to retrieve the file.
           type: string
           format: url
-          example: https://www.example.com/dataset/30f14c6c1fc85cba12bfd093aa8f90e3/file
+          example: https://www.example.com/dataset/30f14c6c-1fc8-5cba-12bf-d093aa8f90e3/file
         metacardLocation:
           description: >
             This URL must support HTTP GET to retrieve the metacard.
           type: string
           format: url
-          example: https://www.example.com/dataset/30f14c6c1fc85cba12bfd093aa8f90e3/metacard
+          example: https://www.example.com/dataset/30f14c6c-1fc8-5cba-12bf-d093aa8f90e3/metacard
         irmLocation:
           description: >
             This URL must support HTTP GET to retrieve the IRM.
           type: string
           format: url
-          example: https://www.example.com/dataset/30f14c6c1fc85cba12bfd093aa8f90e3/irm
+          example: https://www.example.com/dataset/30f14c6c-1fc8-5cba-12bf-d093aa8f90e3/irm
     Version:
       description: Version number.
       type: string
