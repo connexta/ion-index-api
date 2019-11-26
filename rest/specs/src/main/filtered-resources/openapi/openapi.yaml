@@ -148,6 +148,7 @@ components:
       type: object
       required:
         - fileLocation
+        - metacardLocation
         - irmLocation
       properties:
         fileLocation:
@@ -156,6 +157,12 @@ components:
           type: string
           format: url
           example: https://www.example.com/dataset/30f14c6c1fc85cba12bfd093aa8f90e3/file
+        metacardLocation:
+          description: >
+            This URL must support HTTP GET to retrieve the metacard.
+          type: string
+          format: url
+          example: https://www.example.com/dataset/30f14c6c1fc85cba12bfd093aa8f90e3/metacard
         irmLocation:
           description: >
             This URL must support HTTP GET to retrieve the IRM.
