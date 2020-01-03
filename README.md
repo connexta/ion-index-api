@@ -1,3 +1,5 @@
+## ion-index-api is now ARCHIVED
+
 # Index API
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=connexta/ion-index-api)](https://dependabot.com)
 [![Known Vulnerabilities](https://snyk.io/test/github/connexta/ion-index-api/badge.svg)](https://snyk.io/test/github/connexta/ion-index-api)
